@@ -1,0 +1,135 @@
+body { 
+    margin: 0; 
+    background: #0a0a0a; 
+    color: #fff; 
+    font-family: monospace; 
+    overflow: hidden; 
+    transition: background-color 0.1s; 
+}
+
+/* --- 画面揺らし・閃光アニメーション (CSSのみで制御) --- */
+@keyframes screen-shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(6px, 6px) rotate(0.5deg); }
+    50% { transform: translate(-6px, -6px) rotate(-0.5deg); }
+    75% { transform: translate(6px, -6px) rotate(0.5deg); }
+    100% { transform: translate(0, 0); }
+}
+
+/* ボタンが押されている間、画面全体を揺らして白く光らせる */
+body:has(#burstBtn:active) {
+    animation: screen-shake 0.1s infinite;
+    background-color: #330000; /* わずかに赤白く光る */
+}
+
+/* ボタンが押されている間、キャンバスの輝きを爆発させる */
+body:has(#burstBtn:active) #canvas {
+    animation: screen-shake 0.1s infinite;
+    filter: brightness(2.5) blur(1px) drop-shadow(0 0 30px #fff);
+}
+
+/* 閃光アニメーション（既存のJS連携用） */
+.flash { animation: flash-animation 0.3s ease-out; }
+@keyframes flash-animation {
+    0% { background-color: #fff; }
+    100% { background-color: #0a0a0a; }
+}
+
+#canvas { 
+    position: absolute; top:0; left:0; width:100vw; height:100vh; pointer-events: none;
+    /* 粒子の発光を強化 */
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 1)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.8));
+}
+
+#ui { 
+    position: relative; 
+    z-index: 10; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding: 20px; 
+    background: linear-gradient(to bottom, rgba(10,10,10,0.8), transparent); 
+}
+
+textarea { 
+    width: 80%; 
+    max-width: 600px; 
+    height: 100px; 
+    background: rgba(255,255,255,0.05); 
+    color: #fff; 
+    border: 3px solid #fff; 
+    padding: 15px; 
+    font-size: 1.1em; 
+    margin-bottom: 15px; 
+    border-radius: 10px; 
+    box-shadow: 4px 4px 0 #000; 
+    transition: 0.3s;
+}
+
+textarea:focus {
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    outline: none;
+}
+
+/* --- 輝きを強調したボタン --- */
+#burstBtn { 
+    width: 280px; 
+    padding: 15px; 
+    font-size: 1.4rem; 
+    font-weight: bold; 
+    background: #e60000; 
+    color: white; 
+    border: 3px solid #000; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    transition: 0.2s; 
+    box-shadow: 4px 4px 0 #000, 0 0 15px rgba(230, 0, 0, 0.5);
+    position: relative;
+}
+
+#burstBtn:hover { 
+    transform: scale(1.05) translateY(-2px); 
+    background: #ff1a1a;
+    box-shadow: 0 0 30px rgba(255, 50, 50, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.4); 
+}
+
+#burstBtn:active {
+    transform: scale(0.92);
+    background: #fff;
+    color: #e60000;
+    box-shadow: 0 0 60px #fff, 0 0 120px #ff1a1a;
+    transition: 0.05s;
+}
+
+.sample-btn { 
+    padding: 8px 15px; 
+    cursor: pointer; 
+    background: #333; 
+    color: #fff; 
+    border: 2px solid #000; 
+    margin: 3px; 
+    border-radius: 5px; 
+    transition: 0.2s;
+}
+
+.sample-btn:hover { 
+    background: #fff; 
+    color: #000; 
+    box-shadow: 0 0 15px #fff; 
+}
+
+#log { 
+    color: #0f0; 
+    width: 80%; 
+    max-width: 600px; 
+    height: 50px; 
+    border: 2px solid #333; 
+    padding: 10px; 
+    background: rgba(0,0,0,0.9); 
+    margin-top: 10px; 
+    font-size: 0.8rem; 
+    border-radius: 5px; 
+    text-shadow: 0 0 5px #0f0; 
+    box-shadow: inset 0 0 10px rgba(0,255,0,0.2);
+}

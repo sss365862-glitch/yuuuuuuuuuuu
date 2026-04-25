@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Mad-Type-Output (Anime Ed.)</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div id="ui">
+        <h1>Mad-Type-Output</h1>
+        <p class="subtitle">建前を捨て、本音を叩き込め。</p>
+        <textarea id="input" placeholder="ここに本音や狂気を入力..."></textarea>
+        
+        <button id="burstBtn" onclick="runBurst()">熱量を解放 (BURST)</button>
+        <div id="sample-group">
+            <button class="sample-btn" onclick="setSample('建前')">建前</button>
+            <button class="sample-btn" onclick="setSample('本音')">本音</button>
+            <button class="sample-btn" onclick="setSample('狂気')">狂気(長文)</button>
+        </div>
+
+        <div id="log">解析準備完了...</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
