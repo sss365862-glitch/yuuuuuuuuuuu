@@ -1,0 +1,87 @@
+/* アニメ調のパキッとしたダークモード */
+body { 
+    margin: 0; 
+    background: #0a0a0a; 
+    color: #fff; 
+    font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; 
+    overflow: hidden; 
+}
+
+#canvas { 
+    position: absolute; 
+    top:0; 
+    left:0; 
+    width:100vw; 
+    height:100vh; 
+    pointer-events: none; 
+}
+
+#ui { 
+    position: relative; 
+    z-index: 10; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding: 20px; 
+    background: linear-gradient(to bottom, rgba(10,10,10,0.8), transparent);
+}
+
+h1 { margin: 0; font-size: 2em; text-shadow: 2px 2px 0 #000; }
+.subtitle { margin: 5px 0 15px 0; font-size: 0.9em; color: #aaa; }
+
+textarea { 
+    width: 80%; 
+    max-width: 600px;
+    height: 100px; 
+    background: rgba(255,255,255,0.05); 
+    color: #fff; 
+    border: 3px solid #fff; /* 太めのフチ */
+    padding: 15px; 
+    font-size: 1.1em; 
+    margin-bottom: 15px; 
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 #000; /* アニメ風の影 */
+}
+
+#burstBtn {
+    width: 280px; 
+    padding: 15px; 
+    font-size: 1.4rem; 
+    font-weight: bold;
+    background: #e60000; /* パキッとした赤 */
+    color: white; 
+    border: 3px solid #000; 
+    border-radius: 50px;
+    cursor: pointer; 
+    transition: 0.1s;
+    box-shadow: 4px 4px 0 #000;
+}
+#burstBtn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #000; }
+#burstBtn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
+
+#sample-group { margin: 15px 0; }
+.sample-btn { 
+    padding: 8px 15px; 
+    cursor: pointer; 
+    background: #333; 
+    color: #fff; 
+    border: 2px solid #000; 
+    margin: 3px; 
+    border-radius: 5px;
+}
+.sample-btn:hover { background: #fff; color: #000; }
+
+#log { 
+    color: #0f0; 
+    width: 80%; 
+    max-width: 600px;
+    height: 50px; 
+    border: 2px solid #333; 
+    padding: 10px; 
+    background: rgba(0,0,0,0.9); 
+    overflow-y: hidden; 
+    margin-top: 10px; 
+    font-family: monospace;
+    font-size: 0.8rem;
+    border-radius: 5px;
+}
